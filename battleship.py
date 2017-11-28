@@ -2,10 +2,10 @@ import socket
 
 def print_board(board):
 	for i in range(1,6):
-		print(i, end='       ')
-	print()	
+		print(i,'       ')
+	print()
 	for row in board:
-		print( " ".join(row))
+		print( "".join(row))
 
 # # if __name__ == "_main_":
 # 	# CONNECTION_LIST = []
@@ -16,6 +16,6 @@ def print_board(board):
 # 	# s.setsockopt(socket.SOL_SOCKET, socket.SO_RE)
 board = []
 for i in range(0,5):
-	board.append(["|____|"]*5)
+	board.append(["|____"]*5)
 
 print_board(board)
