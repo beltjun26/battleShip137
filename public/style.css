@@ -94,3 +94,40 @@ html{
 	background:#6EA660;
 	color:white;
 }
+
+
+#main_name{
+	background:#6EA660;
+}
+
+.player_name{
+	font-size:50px;
+	background-color: #6EA660;
+	border:none;
+	border-bottom: 1px solid #333333;
+	outline:none;
+}
+
+#username{
+	margin:15% 0 0 0;
+	text-align: center
+}
+
+label{
+	color:white;
+	font-size:30px;
+}
+
+#submit{
+	border-radius: 40px;
+	border: 3px solid black;
+	padding:0.6em 1.5em;
+	margin:50px;
+	font-size:30px;
+	background:white;
+
+}
+
+#submit:hover{
+	background:silver;
+}
