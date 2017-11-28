@@ -1,11 +1,24 @@
 import socket
 
 def print_board(board):
+	print(' ', end='')
 	for i in range(1,6):
-		print(i, end='       ')
-	print()	
+		print('    ' + str(i), end=' ')
+
+	print("\n", end='   ')
+	for i in range(1,6):
+		print("______", end='')	
+	print("\n", end='')
+
+	count = 0
 	for row in board:
-		print( " ".join(row))
+		count += 1
+		print("  " + "|     "*5 + '|')
+
+		print(count, end='')
+		
+		print(" " +"|     "*5 + '|')
+		print("  " + "".join(row) + '|')
 
 # # if __name__ == "_main_":
 # 	# CONNECTION_LIST = []
@@ -16,6 +29,6 @@ def print_board(board):
 # 	# s.setsockopt(socket.SOL_SOCKET, socket.SO_RE)
 board = []
 for i in range(0,5):
-	board.append(["|____|"]*5)
+	board.append(["|_____"]*5)
 
 print_board(board)
