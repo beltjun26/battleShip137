@@ -2,8 +2,11 @@ var app = require('express')();
 var http = require('http').Server(app)
 var io = require('socket.io')(http);
 
+const express = require("express");
+app.use(express.static("public"));
+
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/battleship.html');
 });
 
 io.on('connection', function(socket){
