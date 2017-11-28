@@ -1,6 +1,6 @@
 html{
 	background: #6EA660;
-	/*background: #333333;*/
+	font-family: "Glacial Indifference";
 }
 
 .title{
@@ -12,22 +12,19 @@ html{
 	color: white;
 }
 .player-board{
-	/*background: #6EA660;*/
-	/*background: #333333;*/
 	margin: 2% auto;
 	width: 650px;
 	height: 550px;
+	/*float:left;*/
 }
 
 .number{
 	font-size:30px;
 	text-align:center;
 	margin-left:2%;
-	/*margin:auto;*/
 	padding:0;
 	letter-spacing:48px;
 	color:white;
-	/*float:left;*/
 }
 
 .number-left{
@@ -39,12 +36,10 @@ html{
 	background: #6EA660;
 	color: #6EA660;	
 	display: flex;
-	/*flow-direction: row;*/
 }
 
 
 .grid{
-	/*background: lemonchiffon;*/
 	background: #333333;
 	color:white;
 	border: 2px solid silver;
@@ -55,9 +50,47 @@ html{
 	height:110px;
 }
 
+.rotate{
+	transform:rotate(270deg);
+}
 
 .grid:hover{
 	color: white;
 	background:grey;
 }
 
+.control-board{
+	margin: -25% 0 0 10%;
+	height: 300px;
+	width:350px;
+	background:#333333;
+	float:right;
+}
+
+.control-board > h1 {
+	letter-spacing: 5px;
+	text-align: center;
+	color:white;
+}
+
+.button-horz{
+
+}
+
+.button{
+	background:silver;
+	width:100px;
+	height:50px;
+	text-align:center;
+	padding:15px;
+	line-height:20px;
+	margin:20px auto;
+	font-size:20px;
+	color:blue;
+	/*border: 1px solid yellow;*/
+}
+
+.button:hover{
+	background:#6EA660;
+	color:white;
+}
