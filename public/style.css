@@ -11,12 +11,7 @@ html{
 	text-align:center;
 	color: white;
 }
-.player-board{
-	margin: 2% auto;
-	width: 650px;
-	height: 550px;
-	/*float:left;*/
-}
+
 
 .number{
 	font-size:30px;
@@ -51,7 +46,7 @@ html{
 }
 
 .rotate{
-	transform:rotate(270deg);
+	transform:rotate(90deg);
 }
 
 .grid:hover{
@@ -59,18 +54,41 @@ html{
 	background:grey;
 }
 
-.control-board{
-	margin: -25% 0 0 10%;
+.player-board{
+	width: 650px;
+	height: 550px;
+	text-align: center;
+	margin: 2% auto;
+}
+
+#wrapper{
+	text-align: center;
+	padding:10px;
+}
+
+#board{
+	width:650px;
+	margin: 50px auto 0px auto;
+	position: relative;
+}
+
+
+
+#control-board{
+	position:absolute;
+	left: 685px;
+	top: 250px;
 	height: 300px;
 	width:350px;
 	background:#333333;
-	float:right;
 }
 
-.control-board > h1 {
+#control-board > h1 {
 	letter-spacing: 5px;
 	text-align: center;
 	color:white;
+	/*font-family:"Glacial Indifference";*/
+	font-weight:100;
 }
 
 .button-horz{
@@ -81,13 +99,14 @@ html{
 	background:silver;
 	width:100px;
 	height:50px;
-	text-align:center;
-	padding:15px;
+	padding:25px 40px 0px 20px;
 	line-height:20px;
 	margin:20px auto;
-	font-size:20px;
-	color:blue;
-	/*border: 1px solid yellow;*/
+	border-radius: 40px;
+	border: 3px solid black;
+	font-size:30px;
+	/*text-align: center;*/
+	/*color:white;*/
 }
 
 .button:hover{
@@ -98,14 +117,19 @@ html{
 
 #main_name{
 	background:#6EA660;
+	text-align: center;
+	padding:10px;
 }
 
 .player_name{
 	font-size:50px;
 	background-color: #6EA660;
 	border:none;
-	border-bottom: 1px solid #333333;
+	border-bottom: 1px solid white;
 	outline:none;
+	width:400px;
+	color:white;
+
 }
 
 #username{
@@ -113,9 +137,18 @@ html{
 	text-align: center
 }
 
+.player_name:focus{
+	border-color:white;
+}
+
 label{
 	color:white;
-	font-size:30px;
+	font-size:45px;
+}
+
+.ship{
+	width:100px;
+	height:120px;
 }
 
 #submit{
