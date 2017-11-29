@@ -54,7 +54,7 @@ function displayShipVerts(){
 				id = (y + x).toString();
 			}
 
-		}		
+		}
 	}
 }
 
@@ -77,14 +77,14 @@ function displayShipHorz(x, y, length){
 				x = parseInt(x) + 1;
 				id = (y + x).toString();
 			}
-		}		
+		}
 	}
 }
 
 function removeShipVerts(e){
 	x, y = checkPoints($(this).attr('id'));
 	var id = (y + parseInt(x)).toString();
-	
+
 	console.log(id);
 	for(i=1;i<length+1;i++){
 		$("#" + id).empty();
@@ -94,10 +94,10 @@ function removeShipVerts(e){
 	}
 }
 
-function removeShipHorz(e){	
+function removeShipHorz(e){
 	x, y = checkPoints($(this).attr('id'));
 	var id = (y + parseInt(x)).toString();
-	
+
 	console.log(id);
 	for(i=1;i<length+1;i++){
 		$("#" + id).empty();

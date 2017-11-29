@@ -3,17 +3,27 @@ var http = require('http').Server(app)
 var io = require('socket.io')(http);
 
 const express = require("express");
-var players = [];
+players = [];
 app.use(express.static("public"));
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/name.html');
 });
+
+app.get('/playGame', function(req, res){
+  res.sendFile(__dirname + '/battleship.html');
+})
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     socket.broadcast.emit('chat message', msg);
   });
+
+  socket.on('player name', function(name){
+    console.log(name);
+    players.push = name;
+    socket.emit('start game');
+  })
 
   socket.on('disconnect', function(){
     io.emit('chat message', 'user disconnected');
