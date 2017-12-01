@@ -331,3 +331,44 @@ label{
 	position: absolute;
 	margin-top:-30px;
 }
+
+
+/* X */
+
+.cross {
+    position: relative;
+    display: inline-block;
+}
+.cross::before, .cross::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+.cross::before {
+    border-bottom: 6px solid red;
+    -webkit-transform: skewY(-10deg);
+    transform: skewY(-10deg);
+}
+.cross::after {
+    border-bottom: 5px solid red;
+    -webkit-transform: skewY(10deg);
+    transform: skewY(10deg);
+}
+
+
+/* Turns */
+
+.turn{
+	margin:auto;
+	margin-top:5%;
+	text-align: center;
+}
+
+.turn h2{
+	color:white;
+	font-size:2em;
+	font-weight: 100;
+	text-transform: uppercase;
+}
