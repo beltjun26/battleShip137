@@ -1,6 +1,7 @@
  //all functions are in the $(document).ready(function()) to make sure that
 //before performing the functions the page is fully loaded
 $(document).ready(function(){
+	console.log(document.cookie);
 	// logical representation of the 5x5 board.
 	//store the places of the initial possitions of the ships
 	battlefield = new Array(5);
@@ -216,7 +217,10 @@ $(document).ready(function(){
 
 	function submitField(){
 		console.log("function called");
-		socket.emit('battlefield layout', battlefield);
+		var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split('=');
+		console.log(ca);
+		socket.emit('battlefield layout', battlefield, ca[1]);
 	}
 
 });
