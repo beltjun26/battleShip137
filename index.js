@@ -21,8 +21,11 @@ io.on('connection', function(socket){
 
   socket.on('player name', function(name){
     console.log(name);
-    players.push = name;
-    socket.emit('start game');
+    players.push(name);
+    console.log(players);
+    if(players.length == 2){
+      io.emit('start game');
+    }
   })
 
   socket.on('disconnect', function(){

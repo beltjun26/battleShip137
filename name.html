@@ -14,7 +14,7 @@
 			$(location).attr('href', '/playGame');
 		});
 
-		$('#submit').click(function(){
+		$('#name').submit(function(){
 			console.log('working');
 			playerName = $('#player_name').val();
 			$('#username').fadeOut();
@@ -23,11 +23,11 @@
 			return false;
 		});
 
-		$('form').submit(function(){
-			socket.emit('chat message', $('#m').val());
-			$('#m').val('');
-			return false;
-		});
+		// $('form').submit(function(){
+		// 	socket.emit('chat message', $('#m').val());
+		// 	$('#m').val('');
+		// 	return false;
+		// });
 
 		socket.on('chat message', function(msg){
 			$('#messages').append($('<li>').text(msg));
@@ -38,9 +38,11 @@
 
 <body id="main_name">
 	<div id="username">
-		<label for="player_name">What's your name?</label><br>
-		<input name="name" id="player_name" class="player_name" type="text" autofocus/><br>
-		<button id="submit" type="button">Enter</button>
+		<form id="name">
+			<label for="player_name">What's your name?</label><br>
+			<input name="name" id="player_name" class="player_name" type="text" autofocus/><br>
+			<button id="submit" type="submit">Enter</button>
+		</form>
 	</div>
 	<div id="wait" style="visibility: hidden">
 		<label>Waiting for other player</label>
