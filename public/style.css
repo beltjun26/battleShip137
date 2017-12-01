@@ -1,3 +1,7 @@
+*{
+	box-sizing: border-box;
+}
+
 html{
 	background: #6EA660;
 	font-family: "Glacial Indifference";
@@ -7,59 +11,54 @@ body{
 	margin: 0;
 }
 
-#wrapper{
-	max-height: 100vh!important;
-	height: 100vh!important;
-	/*overflow: hidden;*/
-	padding: 0!important;
-}
-
-.title{
-	font-size: 50px;
-	font-family: "Glacial Indifference";
-	letter-spacing: 20px;
-	margin: 2.5% 0 1.5% 0;
-	text-align:center;
-	color: white;
-	transform: translate(20px, 0); 
-}
 
 #board{
 	display: flex;
 	flex-wrap: wrap;
-	width:650px;
-	/*margin-top: 50px;*/
+	width: 23em;
 	margin: 0px auto 0px auto;
 	position: relative;
 	max-height: 100vh;
-	left: -1.5%;
+}
+
+#wrapper{
+	padding: 0!important;
+}
+
+.title{
+	font-family: "Glacial Indifference";
+	transform: translate(20px, 0); 
+	margin: 2.5% 0 1.5% 0;
+	letter-spacing: 20px;
+	text-align:center;
+	font-size: 2em;
+	color: white;
 }
 
 .number{
-	font-size:20px;
-	text-align:center;
-	padding:0;
-	letter-spacing:48px;
-	color:white;
 	justify-content: space-around;
+	letter-spacing:48px;
+	text-align:center;
+	font-size:20px;
+	color:white;
+	padding:0;
 }
 
 .number-top{
-	display: flex;
-	margin-left: 10%;
-	width: 90%;
 	margin-bottom: 15px;
+	margin-left: 2em;
+	display: flex;
+	width: 21em;
 }
 
 .number-left{
-	display: flex;
 	flex-direction: column;
-	width: 10%;
+	display: flex;
+	width: 2em;
 }
 
-
-.player-board{
-	width: 90%;
+.number > span{
+	width: 0.75em;
 }
 
 .row{
@@ -69,13 +68,12 @@ body{
 }
 
 .grid{
+	border: 1px solid #444;
 	background: #333333;
-	color:white;
-	border: 2px solid silver;
-	flex: 1;
 	text-align:center;
-	height: 100px;
-	width: 100px;
+	height: 4em;
+	color:white;
+	width: 4em;
 }
 
 .rotate{
@@ -92,47 +90,6 @@ body{
 #wrapper{
 	text-align: center;
 	padding:10px;
-}
-
-#control-board{
-	display: flex;
-	background:#333333;
-	width: 100%;
-	justify-content: space-around;
-	border-radius: 4px;
-	padding: 10px 0;
-	margin-top: 25px;
-	align-items: center;
-	margin-left: 10%;
-	width: 90%;
-}
-
-#control-board > h1 {
-	letter-spacing: 5px;
-	text-align: center;
-	color:white;
-	/*font-family:"Glacial Indifference";*/
-	font-size: 25px;
-	font-weight:100;
-}
-
-.button{
-	background:silver;
-	width:150px;
-	height:50px;
-	padding: 5px 10px;
-	line-height: 1.75em;
-	/*margin:20px auto;*/
-	border-radius: 40px;
-	border: 3px solid black;
-	font-size: 25px;
-	text-align: center;
-	cursor: pointer;
-}
-
-.button:hover{
-	background:#6EA660;
-	color:white;
 }
 
 
@@ -153,11 +110,6 @@ body{
 	font-family: "Glacial Indifference";
 }
 
-button{
-	font-family: "Glacial Indifference";
-
-}
-
 #username{
 	margin:15% 0 0 0;
 	text-align: center
@@ -174,41 +126,28 @@ label{
 }
 
 .ship{
-	width:100px;
-	height:120px;
+	width:60px;
+	height:66px;
 }
-
-#submit{
-	border-radius: 40px;
-	border: 3px solid black;
-	padding:0.6em 1.5em;
-	margin:50px;
-	font-size:30px;
-	background:white;
-
-}
-
-#submit:hover{
-	background:silver;
-}
-
 
 /* VICTORY PAGE */
 
 .win{
 	background-color: #6EA660; 
+	overflow: hidden;
 }
 
 #winner-board{
 	color:white;
 	text-align: center;
 	height: 100vh;
-	margin-top:20%;
+	margin-top:15%;
 }
 
 #winner-board > h1 {
 	font-family: "Glacial Indifference";
 	font-weight: 100;
+	max-height: 100vh;
 }
 
 #winner-board > h2 {
@@ -236,9 +175,12 @@ label{
 
 
 .game-board{
-	width: 80%;
-	background: yellow;
+	width: 23em;
 	margin:auto;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	margin: 0px auto 0px auto;
 }
 
 .ggrid {
@@ -265,17 +207,127 @@ label{
 	flex-wrap: wrap;
 }
 
-/*.boards{
-	display:flex;
-	flex-wrap:wrap;
-	width:50%;
-	position: relative;
-	left: -1.5%;
-	margin:auto;
-}*/
+#config{
+	color:white;
+	letter-spacing: 2px;
+	font-size: 1.5em;
+	display: flex;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 10;
+	transform: translate(-50%, -50%);
+}
 
-/*.number-left-g{
-	display:flex;
+.horizontal-flex{
+	display: flex;
+	flex-direction: row;
+}
+
+.vertical-flex{
+	display: flex;
 	flex-direction: column;
-	width:20%;
-}*/
+}
+
+.controls{
+	width: 80%;
+	background-color: #333;
+	border-radius: 4px;
+	padding: 0.25em;
+	margin: auto;
+	margin-top: 0.5em;
+}
+
+.controls h1{
+	font-weight: normal;
+	font-size: 1em;
+	width: 100%;
+	text-align: left;
+	color: white;
+	margin-top: 0;
+}
+
+#ship-options, #control-board, .button-holder{
+	display: flex;
+	flex-wrap: wrap;
+	background-color: rgba(0,0,0,0.1);
+	margin-right: 0.25em;
+	border-radius: 4px;
+	padding: 0.5em;
+	justify-content: center;
+}
+
+#ship-options, #control-board{
+	width: 40%;
+}
+
+.ship-panel{
+	width: 90%;
+}
+
+
+#ship-options > div{
+	border-radius: 4px;
+	padding: 0.25em;
+}
+
+#ship-options > .first-option{
+	width: 57.5%;
+	margin-right: 2.5%;
+}
+
+#ship-options > .second-option{
+	width: 40%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+#ship-options img{
+	width: 100%;
+	}
+
+#ship-options .first-option{
+	margin-left: 0;
+}
+
+#control-board > .button{
+	padding: 0.25em 1em;
+	background-color: #888;
+	border-radius: 4px;
+	margin-right: 1%;
+	width: 48%;
+	height: 1.75em;
+}
+
+.button-holder{
+	width: 20%;
+	align-items: center;
+	margin-right: 0;
+}
+
+#submit{
+	background-color: #48A931;
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	border-radius: 4px;
+	border: none;
+	font-family: "Glacial Indifference";
+	font-size: 1em;
+	letter-spacing: 0.2em;
+	padding: 0.25em 1em;
+}
+
+.caption{
+	color: white;
+}
+
+.config-warning{
+	font-size:15px;
+	color:white;
+	font-weight: 100;
+	position: absolute;
+	margin-top:-30px;
+}

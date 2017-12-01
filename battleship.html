@@ -6,8 +6,13 @@
     <script src="../socket.io/socket.io.js"></script>
   	<script type="text/javascript" src="jquery.min.js"></script>
   	<script type="text/javascript" src="battleship.js"></script>
+  	<!-- <script type="text/javascript" src="config.js"></script> -->
 </head>
 <body>
+	<div id="config">
+  		<!-- <h2>Configuring...</h2>	 -->
+  		<span><img src="images/ring.gif"/></span>
+ 	</div>
 	<div id="wrapper">
 		<div class="title">BATTLESHIP</div>
 		<div id="board">
@@ -62,15 +67,29 @@
 					<div class="grid" id="55"></div>
 				</div>
 			</div>
-			<div id="control-board">
-				<h1>PLACE SHIPS</h1>
-				<div class="button" id="button-horz">Horizontal</div>
-				<div class="button" id="button-verts">Vertical</div>
-			</div>
-      <div class="">
-        <button type="button" name="button" id="submit">Submit</button>
-      </div>
 		</div>
+     	<div class="controls horizontal-flex">
+			<div id="ship-options">
+				<h1>Ship size</h1>
+				<div class="first-option" id="two">
+					<img src="images/ship-white-cropped.png"/>
+					<span class="caption">Big</span>
+				</div>
+				<div class="second-option" id="three">
+					<img src="images/ship-white-cropped.png"/>
+					<span class="caption">Small</span>
+				</div>
+			</div>
+			<div id="control-board">
+				<h1>Ship orientation</h1>
+				<div class="button caption" id="button-horz">Horizontal</div>
+				<div class="button caption" id="button-verts">Vertical</div>
+			</div>
+			<div class="button-holder">
+				<h2 class="config-warning">Configuring...</h2>
+				<button type="button" name="button" id="submit">Submit</button>
+			</div>
+     	</div>
 	</div>
 </body>
 </html>
