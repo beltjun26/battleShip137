@@ -10,7 +10,7 @@ body{
 #wrapper{
 	max-height: 100vh;
 	height: 100vh!important;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	padding: 0!important;
 }
 
@@ -89,12 +89,6 @@ body{
 	background:grey;
 }
 
-/*.player-board{
-	width: 650px;
-	height: 550px;
-	text-align: center;
-	margin: 2% auto;
-}*/
 
 #wrapper{
 	text-align: center;
@@ -102,11 +96,6 @@ body{
 }
 
 #control-board{
-	/*position:absolute;*/
-	/*left: 685px;*/
-	/*top: 250px;*/
-	/*height: 300px;*/
-	/*width:350px;*/
 	display: flex;
 	background:#333333;
 	width: 100%;
