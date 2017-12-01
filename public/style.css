@@ -8,14 +8,14 @@ body{
 }
 
 #wrapper{
-	max-height: 100vh;
+	max-height: 100vh!important;
 	height: 100vh!important;
 	/*overflow: hidden;*/
 	padding: 0!important;
 }
 
 .title{
-	font-size: 60px;
+	font-size: 50px;
 	font-family: "Glacial Indifference";
 	letter-spacing: 20px;
 	margin: 2.5% 0 1.5% 0;
@@ -28,16 +28,16 @@ body{
 	display: flex;
 	flex-wrap: wrap;
 	width:650px;
-	margin: 50px auto 0px auto;
+	/*margin-top: 50px;*/
+	margin: 0px auto 0px auto;
 	position: relative;
-	/*max-height: 50vh;*/
+	max-height: 100vh;
 	left: -1.5%;
 }
 
 .number{
-	font-size:30px;
+	font-size:20px;
 	text-align:center;
-	/*margin-left:2%;*/
 	padding:0;
 	letter-spacing:48px;
 	color:white;
@@ -48,15 +48,15 @@ body{
 	display: flex;
 	margin-left: 10%;
 	width: 90%;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 
 .number-left{
 	display: flex;
 	flex-direction: column;
-	/*height: 100%;*/
 	width: 10%;
 }
+
 
 .player-board{
 	width: 90%;
@@ -68,13 +68,11 @@ body{
 	display: flex;
 }
 
-
 .grid{
 	background: #333333;
 	color:white;
 	border: 2px solid silver;
 	flex: 1;
-	font-size:50px;
 	text-align:center;
 	height: 100px;
 	width: 100px;
@@ -87,6 +85,7 @@ body{
 .grid:hover{
 	color: white;
 	background:grey;
+	cursor: pointer;
 }
 
 
@@ -128,7 +127,6 @@ body{
 	border: 3px solid black;
 	font-size: 25px;
 	text-align: center;
-	/*color:white;*/
 	cursor: pointer;
 }
 
@@ -157,6 +155,7 @@ body{
 
 button{
 	font-family: "Glacial Indifference";
+
 }
 
 #username{
@@ -166,6 +165,7 @@ button{
 
 .player_name:focus{
 	border-color:white;
+
 }
 
 label{
@@ -191,3 +191,91 @@ label{
 #submit:hover{
 	background:silver;
 }
+
+
+/* VICTORY PAGE */
+
+.win{
+	background-color: #6EA660; 
+}
+
+#winner-board{
+	color:white;
+	text-align: center;
+	height: 100vh;
+	margin-top:20%;
+}
+
+#winner-board > h1 {
+	font-family: "Glacial Indifference";
+	font-weight: 100;
+}
+
+#winner-board > h2 {
+	font-weight: 50;
+	font-size: 20px;
+}
+
+.player{
+	color:#333333;
+}
+	
+/* GAME BOARD */
+
+#game{
+	display:flex;
+}
+
+.title-board{
+	text-align: center;
+	font-size:30px;
+	color:white;
+	letter-spacing: 5px;
+	margin: 40px 0px 20px 0px;
+}
+
+
+.game-board{
+	width: 80%;
+	background: yellow;
+	margin:auto;
+}
+
+.ggrid {
+	height:90px;
+	width: 90px;
+	background-color: #333333;
+	border: 2px solid silver;
+	flex:1;
+}
+
+.ggrid:hover{
+	color:white;
+	background:grey;
+	cursor:pointer;
+}
+
+#player1, #player2{
+	width:50%;
+} 
+
+
+#game{
+	display:flex;
+	flex-wrap: wrap;
+}
+
+/*.boards{
+	display:flex;
+	flex-wrap:wrap;
+	width:50%;
+	position: relative;
+	left: -1.5%;
+	margin:auto;
+}*/
+
+/*.number-left-g{
+	display:flex;
+	flex-direction: column;
+	width:20%;
+}*/

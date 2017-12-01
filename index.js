@@ -2,6 +2,7 @@ var app = require('express')();
 var http = require('http').Server(app)
 var io = require('socket.io')(http);
 
+var player1 
 const express = require("express");
 players = [];
 app.use(express.static("public"));
