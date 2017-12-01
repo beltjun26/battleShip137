@@ -1,21 +1,46 @@
 var app = require('express')();
 var http = require('http').Server(app)
 var io = require('socket.io')(http);
+var session = require('express-session')({
+  secret: "my-secret",
+  resave: true,
+  saveUninitialized:true
+});
+var sharedsession = require('express-socket.io-session');
 
-var player1 
+app.use(session);
+io.use(sharedsession(session));
+
 const express = require("express");
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true,
+}));
+
 players = [];
+playerField = new Array(2);
 app.use(express.static("public"));
 
 app.get('/',  function(req, res){
-  res.sendFile(__dirname + '/name.html');
+
+  if(players.length == 2){
+    res.sendFile(__dirname + '/error.html');
+  }
+  if(players.length < 2){
+    res.sendFile(__dirname + '/name.html');
+  }
 });
 
-app.get('/playGame', function(req, res){
+app.get('/setupShip', function(req, res){
   res.sendFile(__dirname + '/battleship.html');
-})
+});
+
+app.get('/game', function(req, res){
+  res.sendFile(__dirname + '/game.html');
+});
 
 io.on('connection', function(socket){
+  console.log('new Connection');
   socket.on('chat message', function(msg){
     socket.broadcast.emit('chat message', msg);
   });
@@ -29,9 +54,15 @@ io.on('connection', function(socket){
     }
   });
 
-  socket.on('battlefield layout', function(battlefield){
+  socket.on('battlefield layout', function(battlefield,name){
+    console.log(name);
     console.log('recieved form battle');
-    console.log(battlefield);
+    if(players[0]==name){
+      playerField[0]=battlefield;
+    }else{
+      playerField[1]=battlefield;
+    }
+    console.log(playerField);
   });
 
   socket.on('disconnect', function(){
