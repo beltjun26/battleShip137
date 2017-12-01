@@ -15,10 +15,22 @@ $(document).ready(function(){
 			battlefield[i][e] = 0;
 		}
 	}
+
+	$('#config').hide();
+	$('.config-warning').hide();
+
 	$('#button-horz').click(placeHorizontal);
 	$('#button-verts').click(placeVertical);
+	$('#two').click(twoShip);
+	$('#three').click(threeShip);
 	$('.grid').mouseenter(display);
 	$('#submit').click(submitField);
+	$('#submit').click(load);
+
+	function load(e){
+		$('#config').fadeIn('slow');
+		$('.config-warning').fadeIn('slow');
+	}
 	// $('.gird').click(clickBox);
 	var socket = io();
 	var orientation, x, y, points;
@@ -110,6 +122,18 @@ $(document).ready(function(){
 		$('#button-verts').css('color', 'white');
 		$('#button-horz').css('background', 'silver');
 		// $('.grid').mouseleave(removeShipVerts);
+	}
+
+	function twoShip(e){
+		length = 2;
+		$('#two').css('background', '#6d8556');
+		$('#three').css('background', '#333333');
+	}
+
+	function threeShip(e){
+		length = 3;
+		$('#three').css('background', '#6d8556');
+		$('#two').css('background', '#333333');
 	}
 
 
