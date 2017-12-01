@@ -1,4 +1,4 @@
-//all functions are in the $(document).ready(function()) to make sure that
+ //all functions are in the $(document).ready(function()) to make sure that
 //before performing the functions the page is fully loaded
 $(document).ready(function(){
 	// logical representation of the 5x5 board.
@@ -16,6 +16,7 @@ $(document).ready(function(){
 	$('#button-horz').click(placeHorizontal);
 	$('#button-verts').click(placeVertical);
 	$('.grid').mouseenter(display);
+	$('.grid').click(placeShip);
 
 	var orientation, x, y, points;
 	var length = 2;
@@ -137,8 +138,6 @@ $(document).ready(function(){
 	function removeShipVerts(e){
 		x, y = checkPoints($(this).attr('id'));
 		var id = (y + parseInt(x)).toString();
-
-		console.log(id);
 		for(i=1;i<length+1;i++){
 			$("#" + id).empty();
 			y = parseInt(y) + 1;
@@ -158,4 +157,9 @@ $(document).ready(function(){
 			console.log("ID: " + id);
 		}
 	}
+
+	function placeShip(e){
+		console.log('placing');
+	}
 });
+ 

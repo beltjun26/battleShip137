@@ -6,7 +6,7 @@ const express = require("express");
 players = [];
 app.use(express.static("public"));
 
-app.get('/',  xfunction(req, res){
+app.get('/',  function(req, res){
   res.sendFile(__dirname + '/name.html');
 });
 
