@@ -6,7 +6,7 @@ const express = require("express");
 players = [];
 app.use(express.static("public"));
 
-app.get('/',  xfunction(req, res){
+app.get('/',  function(req, res){
   res.sendFile(__dirname + '/name.html');
 });
 
@@ -26,7 +26,12 @@ io.on('connection', function(socket){
     if(players.length == 2){
       io.emit('start game');
     }
-  })
+  });
+
+  socket.on('battlefield layout', function(battlefield){
+    console.log('recieved form battle');
+    console.log(battlefield);
+  });
 
   socket.on('disconnect', function(){
     io.emit('chat message', 'user disconnected');
