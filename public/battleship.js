@@ -1,11 +1,17 @@
  //all functions are in the $(document).ready(function()) to make sure that
 //before performing the functions the page is fully loaded
+
+
+
 $(document).ready(function(){
 	console.log(document.cookie);
 	var decodedCookie = decodeURIComponent(document.cookie);
 	var ca = decodedCookie.split('=');
 	var lengthTwoShip = 0;
 	$('#hidden').val(ca[1]);
+
+
+
 	// logical representation of the 5x5 board.
 	//store the places of the initial possitions of the ships
 	battlefield = new Array(5);
@@ -257,6 +263,19 @@ $(document).ready(function(){
 		if(bigShipCount == 1){
 			$("#three").addClass('limit');
 		}
+	}
+
+// use hit or miss function. Id of grid as parameter.
+
+	function hit(id){
+		var hitImg = '<img class="hit" src="images/hit1.png" />';
+		$(id).append(hitImg).fadeIn(999);
+	}
+
+
+	function miss(id){
+		var content = '<h4 class="miss">MISS</h4>';
+		$(id).append(content).fadeIn(999);
 	}
 
 	function submitField(){
