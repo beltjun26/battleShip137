@@ -2,10 +2,14 @@
 //before performing the functions the page is fully loaded
 $(document).ready(function(){
 	console.log(document.cookie);
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split('=');
+	var lengthTwoShip = 0;
+	$('#hidden').val(ca[1]);
 	// logical representation of the 5x5 board.
 	//store the places of the initial possitions of the ships
 	battlefield = new Array(5);
-	battleship = 3;
+	battleship = 0;
 
 	for(let i = 0; i < 5; i++){
 		battlefield[i] = new Array(5);
@@ -25,12 +29,6 @@ $(document).ready(function(){
 	$('#three').click(threeShip);
 	$('.grid').mouseenter(display);
 	$('#submit').click(submitField);
-	$('#submit').click(load);
-
-	function load(e){
-		$('#config').fadeIn('slow');
-		$('.config-warning').fadeIn('slow');
-	}
 	// $('.gird').click(clickBox);
 	var socket = io();
 	var orientation, x, y, points;
@@ -95,7 +93,7 @@ $(document).ready(function(){
 		}else{
 			length = 2;
 		}
-		if(isClear($(this))){
+		if(isClear($(this)) && orientation != '' && battleship != 0){
 			x, y = checkPoints($(this).attr('id'));
 			$(this).click(clickBox);
 			if(orientation == 'horizontal'){
@@ -125,13 +123,17 @@ $(document).ready(function(){
 	}
 
 	function twoShip(e){
-		length = 2;
+		if(lengthTwoShip == 1){
+			battleship = 2;
+		}else{
+			battleship = 1;
+		}
 		$('#two').css('background', '#6d8556');
 		$('#three').css('background', '#333333');
 	}
 
 	function threeShip(e){
-		length = 3;
+		battleship = 3;
 		$('#three').css('background', '#6d8556');
 		$('#two').css('background', '#333333');
 	}
@@ -216,7 +218,7 @@ $(document).ready(function(){
 	}
 
 	function clickBox(){
-		if(isClear($(this))){ //FOR SERCURITY PURPOSES
+		if(isClear($(this)) && orientation != '' && battleship != 0){ //FOR SERCURITY PURPOSES
 			$(this).off('mouseleave');
 			x, y = checkPoints($(this).attr('id'));
 			x = parseInt(x) - 1;
@@ -235,16 +237,25 @@ $(document).ready(function(){
 					battlefield[x][i+y] = battleship;
 				}
 			}
+			if(battleship == 1){
+				lengthTwoShip = 1;
+			}
+			battleship = 0;
 		}
 		$(this).off('click');
 	}
 
 	function submitField(){
-		console.log("function called");
-		var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split('=');
+		$('#config').fadeIn('slow');
+		$('.config-warning').fadeIn('slow');
+
 		console.log(ca);
 		socket.emit('battlefield layout', battlefield, ca[1]);
 	}
+
+	socket.on('begin', function(){
+		$('#subForm').submit();
+	})
+
 
 });

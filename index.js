@@ -6,8 +6,10 @@ var session = require('express-session')({
   resave: true,
   saveUninitialized:true
 });
-var sharedsession = require('express-socket.io-session');
 
+var gameSocket = io.of('/game');
+var sharedsession = require('express-socket.io-session');
+var toStart = 0;
 app.use(session);
 io.use(sharedsession(session));
 
@@ -35,7 +37,7 @@ app.get('/setupShip', function(req, res){
   res.sendFile(__dirname + '/battleship.html');
 });
 
-app.get('/game', function(req, res){
+app.post('/game', function(req, res){
   res.sendFile(__dirname + '/game.html');
 });
 
@@ -63,11 +65,36 @@ io.on('connection', function(socket){
       playerField[1]=battlefield;
     }
     console.log(playerField);
+    if(playerField[0]!=null && playerField[1]!=null){
+      io.emit('begin');
+    }
   });
 
-  socket.on('disconnect', function(){
-    io.emit('chat message', 'user disconnected');
-  })
+});
+
+gameSocket.on('connection', function(socket){
+  var playername;
+  var opponent;
+  var myField;
+  console.log('connected on game');
+  socket.on('identifyPlayer', function(name){
+    playername = name;
+    if(name == players[0]){
+      opponent = players[1];
+    }else{
+      opponent = players[0];
+    }
+    socket.emit('opponentName', opponent);
+    socket.on('requestMyBattleField', function(){
+      if(name == players[0]){
+        myField = playerField[0];
+      }else if(name == players[1]){
+        myField = playerField[1];
+      }
+      socket.emit('userBattleField', myField);
+    });
+  });
+
 });
 
 http.listen(3000, function(){

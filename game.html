@@ -2,13 +2,18 @@
 <head>
   	<meta charset="utf-8">
   	<title>BattleShip</title>
+
   	<link href="style.css" rel="stylesheet">
+    <script src="../socket.io/socket.io.js"></script>
+  	<script type="text/javascript" src="jquery.min.js"></script>
+    <script src="game.js">
+    </script>
 </head>
 <body>
 	<div id="game">
 
 		<div id="player1">
-			<div class="title-board"><span id="player1">Player 1's board</span></div>
+			<div class="title-board"><span id="p1name">Your board</span></div>
 			<div class="boards">
 				<div class="number number-top">
 					<span>1</span>
@@ -26,46 +31,46 @@
 				</div> -->
 				<div class="game-board" id="player1-board">
 					<div class="row">
-						<div class="grid" id="11"></div>
-						<div class="grid" id="12"></div>
-						<div class="grid" id="13"></div>
-						<div class="grid" id="14"></div>
-						<div class="grid" id="15"></div>
+						<div class="grid" id="l11"></div>
+						<div class="grid" id="l12"></div>
+						<div class="grid" id="l13"></div>
+						<div class="grid" id="l14"></div>
+						<div class="grid" id="l15"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="21"></div>
-						<div class="grid" id="22"></div>
-						<div class="grid" id="23"></div>
-						<div class="grid" id="24"></div>
-						<div class="grid" id="25"></div>
+						<div class="grid" id="l21"></div>
+						<div class="grid" id="l22"></div>
+						<div class="grid" id="l23"></div>
+						<div class="grid" id="l24"></div>
+						<div class="grid" id="l25"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="31"></div>
-						<div class="grid" id="32"></div>
-						<div class="grid" id="33"></div>
-						<div class="grid" id="34"></div>
-						<div class="grid" id="35"></div>
+						<div class="grid" id="l31"></div>
+						<div class="grid" id="l32"></div>
+						<div class="grid" id="l33"></div>
+						<div class="grid" id="l34"></div>
+						<div class="grid" id="l35"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="41"></div>
-						<div class="grid" id="42"></div>
-						<div class="grid" id="43"></div>
-						<div class="grid" id="44"></div>
-						<div class="grid" id="45"></div>
+						<div class="grid" id="l41"></div>
+						<div class="grid" id="l42"></div>
+						<div class="grid" id="l43"></div>
+						<div class="grid" id="l44"></div>
+						<div class="grid" id="l45"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="51"></div>
-						<div class="grid" id="52"></div>
-						<div class="grid" id="53"></div>
-						<div class="grid" id="54"></div>
-						<div class="grid" id="55"></div>
+						<div class="grid" id="l51"></div>
+						<div class="grid" id="l52"></div>
+						<div class="grid" id="l53"></div>
+						<div class="grid" id="l54"></div>
+						<div class="grid" id="l55"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div id="player2">
-			<div class="title-board"><span id="player1">Player 2's board</span></div>
+			<div class="title-board"><span id="p2name">Player 2</span>'s board</div>
 			<div class="boards">
 				<div class="number number-top">
 					<span>1</span>
@@ -83,39 +88,39 @@
 				</div> -->
 				<div class="game-board" id="player2-board">
 					<div class="row">
-						<div class="grid" id="11"></div>
-						<div class="grid" id="12"></div>
-						<div class="grid" id="13"></div>
-						<div class="grid" id="14"></div>
-						<div class="grid" id="15"></div>
+						<div class="grid" id="r11"></div>
+						<div class="grid" id="r12"></div>
+						<div class="grid" id="r13"></div>
+						<div class="grid" id="r14"></div>
+						<div class="grid" id="r15"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="21"></div>
-						<div class="grid" id="22"></div>
-						<div class="grid" id="23"></div>
-						<div class="grid" id="24"></div>
-						<div class="grid" id="25"></div>
+						<div class="grid" id="r21"></div>
+						<div class="grid" id="r22"></div>
+						<div class="grid" id="r23"></div>
+						<div class="grid" id="r24"></div>
+						<div class="grid" id="r25"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="31"></div>
-						<div class="grid" id="32"></div>
-						<div class="grid" id="33"></div>
-						<div class="grid" id="34"></div>
-						<div class="grid" id="35"></div>
+						<div class="grid" id="r31"></div>
+						<div class="grid" id="r32"></div>
+						<div class="grid" id="r33"></div>
+						<div class="grid" id="r34"></div>
+						<div class="grid" id="r35"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="41"></div>
-						<div class="grid" id="42"></div>
-						<div class="grid" id="43"></div>
-						<div class="grid" id="44"></div>
-						<div class="grid" id="45"></div>
+						<div class="grid" id="r41"></div>
+						<div class="grid" id="r42"></div>
+						<div class="grid" id="r43"></div>
+						<div class="grid" id="r44"></div>
+						<div class="grid" id="r45"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="51"></div>
-						<div class="grid" id="52"></div>
-						<div class="grid" id="53"></div>
-						<div class="grid" id="54"></div>
-						<div class="grid" id="55"></div>
+						<div class="grid" id="r51"></div>
+						<div class="grid" id="r52"></div>
+						<div class="grid" id="r53"></div>
+						<div class="grid" id="r54"></div>
+						<div class="grid" id="r55"></div>
 					</div>
 				</div>
 			</div>
