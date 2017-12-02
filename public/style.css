@@ -365,3 +365,20 @@ label{
 	font-weight: 100;
 	text-transform: uppercase;
 }
+
+
+.limit{
+	pointer-events: none;
+	background-color: #ccc;
+	opacity: 0.7;
+}
+
+
+.miss{
+	color:#B0504C;
+	/*display: block;*/
+	width: auto;
+	text-align:center;
+	/*margin: auto;*/
+	font-weight: 100;
+}

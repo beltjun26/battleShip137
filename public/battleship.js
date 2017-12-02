@@ -10,6 +10,8 @@ $(document).ready(function(){
 	//store the places of the initial possitions of the ships
 	battlefield = new Array(5);
 	battleship = 0;
+	smallShipCount = 0;
+	bigShipCount = 0;
 
 	for(let i = 0; i < 5; i++){
 		battlefield[i] = new Array(5);
@@ -225,8 +227,10 @@ $(document).ready(function(){
 			y = parseInt(y) - 1;
 			if(battleship == 3){
 				length =3;
+				bigShipCount+=1;
 			}else{
 				length = 2;
+				smallShipCount+=1;
 			}
 			if(orientation == 'horizontal'){
 				for(let i = 0; i < length; i++){
@@ -243,6 +247,16 @@ $(document).ready(function(){
 			battleship = 0;
 		}
 		$(this).off('click');
+		checkStock();
+	}
+
+	function checkStock(){
+		if(smallShipCount == 2){
+			$("#two").addClass('limit');
+		}
+		if(bigShipCount == 1){
+			$("#three").addClass('limit');
+		}
 	}
 
 	function submitField(){
