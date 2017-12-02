@@ -277,6 +277,11 @@ $(document).ready(function(){
 		var content = '<h4 class="miss">MISS</h4>';
 		$(id).append(content).fadeIn(999);
 	}
+// If own ship was hit
+	function ownhit(id){
+		var hit = '<img class="hit ownhit" src="images/hit1.png" />';
+		$("#l15").append(hit).fadeIn(999);
+	}
 
 	function submitField(){
 		$('#config').fadeIn('slow');

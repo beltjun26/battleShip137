@@ -36,8 +36,8 @@
 						<div class="grid" id="l11"></div>
 						<div class="grid" id="l12"></div>
 						<div class="grid" id="l13"></div>
-						<div class="grid" id="l14"></div>
-						<div class="grid" id="l15"></div>
+						<div class="grid" id="l14" onclick="ownhit(l14)"></div>
+						<div class="grid" id="l15" onclick="ownhit(l15)"></div>
 					</div>
 					<div class="row">
 						<div class="grid" id="l21"></div>
@@ -140,7 +140,11 @@
 		$(id).append(hitImg).fadeIn(999);
 	}
 
-
+	function ownhit(id){
+		console.log("hit");
+		var hit = '<img class="hit ownhit" src="images/hit1.png" />';
+		$(id).append(hit).fadeIn(999);
+	}
 	function miss(id){
 		var content = '<h4 class="miss">MISS</h4>';
 		$(id).append(content).fadeIn(999);
