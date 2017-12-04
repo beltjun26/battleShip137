@@ -37,6 +37,14 @@ app.get('/setupShip', function(req, res){
   res.sendFile(__dirname + '/battleship.html');
 });
 
+app.get('/victory', function(req, res){
+  res.sendFile(__dirname + '/victory.html');
+});
+
+app.get('/lose', function(req, res){
+  res.sendFile(__dirname + '/lose.html');
+});
+
 app.post('/game', function(req, res){
   res.sendFile(__dirname + '/game.html');
 });
@@ -73,6 +81,17 @@ io.on('connection', function(socket){
 });
 
 gameSocket.on('connection', function(socket){
+  function checkWin(array){
+    console.log('is checking');
+    for(let i =0; i < 5; i++){
+      for(let e = 0; e < 5; e++){
+        if(array[i][e] == 1 || array[i][e] == 2 || array[i][e] == 3 ){
+          return false;
+        }
+      }
+    }
+    return true;;
+  }
   var playername;
   var opponentName;
   var myField;
@@ -108,6 +127,11 @@ gameSocket.on('connection', function(socket){
       y = y+1;
       socket.emit('hit', y.toString()+x);
       socket.broadcast.emit('hitAt',y.toString()+x)
+      if(checkWin(playerField[opponentID])){
+        console.log('should have winnerj');
+        socket.emit('win');
+        socket.broadcast.emit('lose');
+      }
     }else{
       x = x+1;
       y = y+1;

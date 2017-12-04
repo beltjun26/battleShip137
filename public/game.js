@@ -150,4 +150,12 @@ $(document).ready(function(){
       $('#player_turn').html('Opponent Turn');
     }
   }
+
+  initSocket.on('win', function(){
+    $(location).attr('href', '/victory');
+  });
+
+  initSocket.on('lose', function(){
+    $(location).attr('href', '/lose');
+  });
 });
