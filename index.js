@@ -74,17 +74,24 @@ io.on('connection', function(socket){
 
 gameSocket.on('connection', function(socket){
   var playername;
-  var opponent;
+  var opponentName;
   var myField;
+  var playerID;
+  var opponentID;
   console.log('connected on game');
   socket.on('identifyPlayer', function(name){
     playername = name;
     if(name == players[0]){
-      opponent = players[1];
+      playerID = 0;
+      opponentID = 1;
+      opponentName = players[1];
+      socket.emit('yourTurn');
     }else{
-      opponent = players[0];
+      playerID = 1;
+      opponentID = 0;
+      opponentName = players[0];
     }
-    socket.emit('opponentName', opponent);
+    socket.emit('opponentName', opponentName);
     socket.on('requestMyBattleField', function(){
       if(name == players[0]){
         myField = playerField[0];
@@ -94,6 +101,22 @@ gameSocket.on('connection', function(socket){
       socket.emit('userBattleField', myField);
     });
   });
+  socket.on('fire', function(x, y){
+    if(playerField[opponentID][x][y] != 0){
+      playerField[opponentID][x][y] = -1;
+      x = x +1;
+      y = y+1;
+      socket.emit('hit', y.toString()+x);
+      socket.broadcast.emit('hitAt',y.toString()+x)
+    }else{
+      x = x+1;
+      y = y+1;
+      socket.emit('miss', y.toString()+x);
+      socket.broadcast.emit('missAt',y.toString()+x)
+    }
+    socket.broadcast.emit('yourTurn');
+  });
+
 
 });
 

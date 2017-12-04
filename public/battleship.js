@@ -265,23 +265,6 @@ $(document).ready(function(){
 		}
 	}
 
-// use hit or miss function. Id of grid as parameter.
-
-	function hit(id){
-		var hitImg = '<img class="hit" src="images/hit1.png" />';
-		$(id).append(hitImg).fadeIn(999);
-	}
-
-
-	function miss(id){
-		var content = '<h4 class="miss">MISS</h4>';
-		$(id).append(content).fadeIn(999);
-	}
-// If own ship was hit
-	function ownhit(id){
-		var hit = '<img class="hit ownhit" src="images/hit1.png" />';
-		$("#l15").append(hit).fadeIn(999);
-	}
 
 	function submitField(){
 		$('#config').fadeIn('slow');

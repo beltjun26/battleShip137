@@ -1,4 +1,4 @@
-<html lang="en">
+<html lansg="en">
 <head>
   	<meta charset="utf-8">
   	<title>BattleShip</title>
@@ -36,8 +36,8 @@
 						<div class="grid" id="l11"></div>
 						<div class="grid" id="l12"></div>
 						<div class="grid" id="l13"></div>
-						<div class="grid" id="l14" onclick="ownhit(l14)"></div>
-						<div class="grid" id="l15" onclick="ownhit(l15)"></div>
+						<div class="grid" id="l14"></div>
+						<div class="grid" id="l15"></div>
 					</div>
 					<div class="row">
 						<div class="grid" id="l21"></div>
@@ -90,63 +90,47 @@
 				</div> -->
 				<div class="game-board" id="player2-board">
 					<div class="row">
-						<div class="grid" id="r11"></div>
-						<div class="grid" id="r12"></div>
-						<div class="grid" id="r13"></div>
-						<div class="grid" id="r14"></div>
-						<div class="grid" id="r15"></div>
+						<div class="grid gameBoard" id="r11"></div>
+						<div class="grid gameBoard" id="r12"></div>
+						<div class="grid gameBoard" id="r13"></div>
+						<div class="grid gameBoard" id="r14"></div>
+						<div class="grid gameBoard" id="r15"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="r21"></div>
-						<div class="grid" id="r22"></div>
-						<div class="grid" id="r23"></div>
-						<div class="grid" id="r24"></div>
-						<div class="grid" id="r25"></div>
+						<div class="grid gameBoard" id="r21"></div>
+						<div class="grid gameBoard" id="r22"></div>
+						<div class="grid gameBoard" id="r23"></div>
+						<div class="grid gameBoard" id="r24"></div>
+						<div class="grid gameBoard" id="r25"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="r31"></div>
-						<div class="grid" id="r32"></div>
-						<div class="grid" id="r33"></div>
-						<div class="grid" id="r34"></div>
-						<div class="grid" id="r35"></div>
+						<div class="grid gameBoard" id="r31"></div>
+						<div class="grid gameBoard" id="r32"></div>
+						<div class="grid gameBoard" id="r33"></div>
+						<div class="grid gameBoard" id="r34"></div>
+						<div class="grid gameBoard" id="r35"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="r41"></div>
-						<div class="grid" id="r42"></div>
-						<div class="grid" id="r43"></div>
-						<div class="grid" id="r44" onclick="hit(r44)"></div>
-						<div class="grid" id="r45"></div>
+						<div class="grid gameBoard" id="r41"></div>
+						<div class="grid gameBoard" id="r42"></div>
+						<div class="grid gameBoard" id="r43"></div>
+						<div class="grid gameBoard" id="r44"></div>
+						<div class="grid gameBoard" id="r45"></div>
 					</div>
 					<div class="row">
-						<div class="grid" id="r51"></div>
-						<div class="grid" id="r52"></div>
-						<div class="grid" id="r53"></div>
-						<div class="grid" id="r54"></div>
-						<div class="grid" onclick="miss(r55)" id="r55"></div>
+						<div class="grid gameBoard" id="r51"></div>
+						<div class="grid gameBoard" id="r52"></div>
+						<div class="grid gameBoard" id="r53"></div>
+						<div class="grid gameBoard" id="r54"></div>
+						<div class="grid gameBoard" id="r55"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="turn">
-			<h2 id="player-turn">Your Turn</h2>
+			<h2 id="player_turn">Opponent Turn</h2>
 		</div>
 	</div>
 </body>
 </html>
-<script>
-	function hit(id){
-		var hitImg = '<img class="hit" src="images/hit1.png" />';
-		$(id).append(hitImg).fadeIn(999);
-	}
-
-	function ownhit(id){
-		console.log("hit");
-		var hit = '<img class="hit ownhit" src="images/hit1.png" />';
-		$(id).append(hit).fadeIn(999);
-	}
-	function miss(id){
-		var content = '<h4 class="miss">MISS</h4>';
-		$(id).append(content).fadeIn(999);
-	}
-</script>

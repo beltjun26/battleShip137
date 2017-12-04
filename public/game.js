@@ -4,6 +4,39 @@ $(document).ready(function(){
   var myBattleField;
   name = ca[1];
   console.log('asdfs');
+
+  function checkPoints(points){
+		x = points.slice(1,2);
+		y = points.slice(1,2);
+    console.log(x, y);
+		return y,x;
+	}
+
+  function isClear(box){
+    console.log(box.html());
+    if(box.html() == ''){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  function hit(id){
+		var hitImg = '<img class="hit" src="images/hit1.png" />';
+		$('#'+id).append(hitImg).fadeIn(999);
+	}
+
+	function ownhit(id){
+		console.log("hit");
+		var hit = '<img class="hit ownhit" src="images/hit1.png" />';
+		$('#'+id).append(hit).fadeIn(999);
+	}
+	function miss(id){
+    console.log('triggered miss');
+		var content = '<h4 class="miss">MISS</h4>';
+		$('#'+id).append(content).fadeIn(999);
+	}
+
   initSocket = io('/game');
   initSocket.emit('identifyPlayer', name);
   initSocket.on('opponentName', function(opponent){
@@ -86,4 +119,35 @@ $(document).ready(function(){
       }
     }
   });
+
+  initSocket.on('yourTurn', function(){
+    console.log('yourTurn');
+    $('#player_turn').html('Your Turn');
+    $('.gameBoard').click(clickGrid);
+  });
+
+  initSocket.on('hit', function(id){
+    console.log(id);
+    hit('r'+id);
+  });
+  initSocket.on('miss', function(id){
+    miss('r'+id);
+  });
+  initSocket.on('hitAt', function(id){
+    ownhit('l'+id);
+  });
+  initSocket.on('missAt', function(id){
+    miss('l'+id);
+  });
+
+  function clickGrid(){
+    if(isClear($(this))){
+      var box = $(this).attr('id')
+      var x = parseInt(box.slice(2,3))-1;
+      var y = parseInt(box.slice(1,2))-1;
+      initSocket.emit('fire', x, y);
+      $('.gameBoard').off('click');
+      $('#player_turn').html('Opponent Turn');
+    }
+  }
 });
